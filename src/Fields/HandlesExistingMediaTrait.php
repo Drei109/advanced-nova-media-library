@@ -22,6 +22,8 @@ trait HandlesExistingMediaTrait
     private function addExistingMedia(NovaRequest $request, $data, HasMedia $model, string $collection, Collection $medias): Collection
     {
         $addedMediaIds = $medias->pluck('id')->toArray();
+        
+        #FORK!
 
         return collect($data)
             ->filter(function ($value) use ($addedMediaIds) {
