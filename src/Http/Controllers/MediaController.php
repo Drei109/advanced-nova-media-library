@@ -24,9 +24,11 @@ class MediaController extends Controller
 
         if ($searchText && $mediaClassIsSearchable) {
             $query = $mediaClass::search($searchText);
+            $query->where('collection_name', 'slide');
         } else {
             $query = $mediaClass::query();
-
+            $query->where('collection_name', 'slide');
+            
             if ($searchText) {
                 $query->where(function ($query) use ($searchText) {
                     $query->where('name', 'LIKE', '%' . $searchText . '%');
